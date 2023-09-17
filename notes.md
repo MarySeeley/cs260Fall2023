@@ -1,6 +1,6 @@
-##Notes for CS 260
+Notes for CS 260
 
-#GitHub
+GitHub
 - You can pull down repositories
 - When you make edits you commit it to save them with notes
 - To merge it with the main branch you push it to the main branch
