@@ -22,3 +22,7 @@ Have you ever wanted to plan something? With friends, family, work colleagues, c
 - Login: Register and login users. Authenticates users and groups that they join.
 - WebSocket data: Shows other users times that are best for all the participants
 - React: Import application to React web framework
+
+### Design Images
+![Start up Specification Design Images](https://github.com/MarySeeley/cs260Fall2023/assets/128410544/b63a26be-f03a-4bda-a52b-debdbefc2e9a)
+
