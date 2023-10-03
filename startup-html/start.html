@@ -22,13 +22,27 @@
         <hr />
 
         <main>
-            <h1>Let's Get Started</h1>
-            <p>Let's get started by logging in and either starting a group or joingin a group!</p>
-            <!---Add password requirement-->
-            <form method = "get" action = "start.html">
-                <label for = "name">Name</label>
-                <input type = "text" id="name" placeholder = "Your name here" />
-                <button type = "submit">Login</button>
+            <h1>Let's Get Start a Group</h1>
+            <form method = "get" action = "create.html">
+                <label for = "groupName">Group Name</label>
+                <input type = "text" id="groupName" placeholder = "Group name here" />
+                <br />
+                <label for = "notes">Notes to Participants</label>
+                <input type = "text" id = "notes" placeholder = "Notes to participants here" />
+                <br />
+                <label for = "startDay">Start Day</label>
+                <input type = "date" id = "startDay" />
+                <br />
+                <label for = "endDay">End Day</label>
+                <input type = "date" id = "endDay" />
+                <br />
+                <label for = "startTime">Start Time</label>
+                <input type = "time" id = "startTime" />
+                <br />
+                <label for = "endTime">End Time</label>
+                <input type = "time" id = "endTime" />
+                <br />
+                <button type = "submit">Create Group</button>
             </form>
         </main>
         <footer>
