@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Let's Get Together HTML</title>
+        <link rel = "icon" href="favicon.ico" />
+    </head>
+    <body>
+        <header>
+            <h1>Let's Get Together</h1>
+            <nav>
+                <menu>
+                    <li><a href = "index.html">Home</a></li>
+                    <li><a href = "groups.html">Your Groups</a></li>
+                    <li><a href = "start.html">Start a Group</a></li>
+                    <li><a href = "join.html">Join a Group</a></li>
+                    <li><a href = "about.html">About</a></li>
+                </menu>
+            </nav>
+        </header>
+        <hr />
+
+        <main>
+            <!---Input Group name-->
+            <h1>Welcome to Group (Group Name)</h1>
+            <h3>Your Group Code is:</h3>
+            <h4>---Code---</h4>   
+            <p>Fill out when you are available</p> 
+            <form method = "get" action = "submission.html">
+            <!--Change colors based on availability-->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Days</th>
+                        <th>Person 1</th>
+                        <th>Person 2</th>
+                        <th>Person 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Monday Oct 2</th>
+                        <td><button>3:00 (Green)</button></td>
+                        <td><button>3:00 (Yellow)</button></td>
+                        <td><button>3:00 (Red)</button></td>
+                    </tr>
+                    <tr>
+                        <th>Tuesday Oct 3</th>
+                        <td><button>4:00 (Yellow)</button></td>
+                        <td><button>4:00 (Red)</button></td>
+                        <td><button>4:00 (Green)</button></td>
+                    </tr>
+                    <tr>
+                        <th>Wednesday Oct 4</th>
+                        <td><button>5:00 (Red)</button></td>
+                        <td><button>5:00 (Green)</button></td>
+                        <td><button>5:00 (Yellow)</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        <footer>
+            <hr />
+            <span class = "text-reset">Author Name(s)</span>
+            <br />
+            <a href="https://github.com/MarySeeley/cs260Fall2023/tree/main">GitHub</a>
+        </footer>
+    </body>
+</html>
