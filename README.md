@@ -26,3 +26,12 @@ Have you ever wanted to plan something? With friends, family, work colleagues, c
 ### Design Images
 ![Start up Specification Design Images](https://github.com/MarySeeley/cs260Fall2023/assets/128410544/b63a26be-f03a-4bda-a52b-debdbefc2e9a)
 
+### HTML Deliverables
+- **HTML pages:** Eight HTML pages to deal with the home, about, your group, joining a group, starting a group, looking at times, submitting times, and results
+- **Links:** At the top of the page are links to home, about, your group, joining a group, and starting a group. Different buttons lead to the pages looking at times, submitting times, and results.
+- **Text:** There is text giving directions, saying what time is best, and in the about us section.
+- **Images:** Calandar image on About Us page.
+- **Login:** Log in box on the main page.
+- **Database:** Each person's available time is stored when they submit it.
+- **WebSocket:** Shows what time is best for everyone in real-time.
+
