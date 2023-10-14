@@ -41,3 +41,14 @@ menu{
     padding: 0 0.3em;
 }
 
+.no{
+    background-color: #c33a3a
+}
+
+.yes{
+    background-color: #5d9e5d
+}
+
+.maybe{
+    background-color: /*#dbc52f*/#ebd431;
+}
