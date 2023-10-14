@@ -30,8 +30,16 @@ Have you ever wanted to plan something? With friends, family, work colleagues, c
 - **HTML pages:** Eight HTML pages to deal with the home, about, your group, joining a group, starting a group, looking at times, submitting times, and results
 - **Links:** At the top of the page are links to home, about, your group, joining a group, and starting a group. Different buttons lead to the pages looking at times, submitting times, and results.
 - **Text:** There is text giving directions, saying what time is best, and in the about us section.
-- **Images:** Calandar image on About Us page.
+- **Images:** Calendar image on About Us page.
 - **Login:** Log in box on the main page.
 - **Database:** Each person's available time is stored when they submit it.
 - **WebSocket:** Shows what time is best for everyone in real-time.
+
+### CSS Deliverables
+- **Header, footer, and main content body:** Used flex display.
+- **Navigation Elements:** Added a colorful header with links to different pages without the underline.
+- **Responsive to window resizing:** Using flex display my website works on different-sized devices
+- **Application Elements:** Different elements are styled differently to match the color scheme and purpose. Has good color contrast and whitespace.
+- **Application text content:** All of the fonts are the same and easy to read.
+- **Application images:** Images have rounded edge and centered. 
 
