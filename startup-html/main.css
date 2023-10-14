@@ -21,7 +21,7 @@ li{
 }
 
 main{
-    flex: calc(100vh - 110px);
+    flex: 1; /*calc(100vh - 110px);*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +30,7 @@ main{
 
 footer{
     flex: 0 30px;
-    margin: 10px;
+    /*margin: 10px;*/
 }
 
 menu{
@@ -42,13 +42,14 @@ menu{
 }
 
 .no{
-    background-color: #c33a3a
+    background-color: /*#c33a3a#5a2c2c*/ #f8d7da;
 }
 
 .yes{
-    background-color: #5d9e5d
+    background-color: /*#5d9e5 #436E75#2a472a*/ #d1e7dd;
 }
 
 .maybe{
-    background-color: /*#dbc52f*/#ebd431;
+    background-color: /*#dbc52 #ebd431#aa9b3b*/#fff3cd;
 }
+
