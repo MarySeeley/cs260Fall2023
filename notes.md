@@ -73,7 +73,7 @@ GitHub
 13. How would you use CSS to change all the div elements to have a background color of red?
 	• Div{ background-color: red;}
 14. How would you display an image with a hyperlink in HTML?
-	• <img alt="mountain landscape" src="https://images.pexels.com/photos/164170/pexels-photo-164170.jpeg" />
+	• <img alt="Description of image" src="image link" />
 15. In the CSS box model, what is the ordering of the box layers starting at the inside and working out?
 	• Content: The content of the box, where the text and images appear
 	• Padding: Clears an area around the content. The padding is transparent
