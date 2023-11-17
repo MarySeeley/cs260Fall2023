@@ -31,18 +31,20 @@
         <main>
             <h1>Join a Group</h1>
             <p>Enter a group code to join a group.</p>
-            <form method = "get" action = "times.html">
+            <p id = "wrongCode"></p>
+            <div>
                 <label for = "groupCode">Group Code</label>
                 <input type = "text" id="groupCode" placeholder = "Group code here" />
                 <br />
-                <button type = "submit" class="btn btn-secondary">Join Group</button>
-            </form>
+                <button type = "submit" class="btn btn-secondary" onclick = "joinGroup()">Join Group</button>
+            </div>
         </main>
         <footer class = "container-fluid">
             <hr />
             <span class = "text-reset">Author Name(s)</span>
             <br />
             <a class = "text-reset" href="https://github.com/MarySeeley/cs260Fall2023/tree/main">Mary Seeley's GitHub</a>
+            <script src = "join.js"></script>
         </footer>
     </body>
 </html>

@@ -30,47 +30,53 @@
 
         <main>
             <!---Input Group name-->
-            <h1>Welcome to Group (Group Name)</h1>
+            <h1>Welcome to Group <span class ="group-name"></span></h1>
             <h3>Your Group Code is:</h3>
-            <h4>---Code---</h4>   
-            <p>Fill out when you are available</p> 
+            <h4 class = "group-code">---Code---</h4>   
+             
             <!--Change colors based on availability-->
             <table class="table table-dark">
-                <thead>
+                <thead id = "resultHead">
+                    <!--
                     <tr>
-                        <th scope = "col">Days</th>
-                        <th scope = "col">Person 1</th>
-                        <th scope = "col">Person 2</th>
-                        <th scope = "col">Person 3</th>
+                        <th scope = "col">Person</th>
+                        <th scope = "col">Monday Oct 2</th>
+                        <th scope = "col">Tuesday Oct 3</th>
+                        <th scope = "col">Wednesday Oct 4</th>
                     </tr>
+                -->
                 </thead>
-                <tbody>
+                <tbody id = "resultBody">
+                    <!--
                     <tr>
-                        <th scope = "row">Monday Oct 2</th>
+                        <th scope = "row">Monday Oct </th>
                         <td class = "table-success">3:00</td>
-                        <td class = "table-warning">3:00</td>
-                        <td class = "table-danger">3:00</td>
+                        <td class = "table-warning">4:00</td>
+                        <td class = "table-danger">5:00</td>
                     </tr>
                     <tr>
                         <th scope = "row">Tuesday Oct 3</th>
-                        <td class = "table-warning">4:00</td>
+                        <td class = "table-warning">3:00</td>
                         <td class = "table-danger">4:00</td>
-                        <td class = "table-success">4:00</td>
+                        <td class = "table-success">5:00</td>
                     </tr>
                     <tr>
                         <th scope = "row">Wednesday Oct 4</th>
-                        <td class = "table-danger">5:00</td>
-                        <td class = "table-success">5:00</td>
+                        <td class = "table-danger">3:00</td>
+                        <td class = "table-success">4:00</td>
                         <td class = "table-warning">5:00</td>
                     </tr>
+                -->
                 </tbody>
             </table>
+            <!--
             <h3>Best times to get together:</h3>
             <li>Date and Time and how many people can show up</li>
             <h3>Next best times to get together</h3>
             <li>Date and time and how many people can show up</li>
             <li>Date and time and how many people can show up</li>
             <li>Date and time and how many people can show up</li>
+            -->
         </main>
         <footer class = "container-fluid">
             <hr />
@@ -78,5 +84,6 @@
             <br />
             <a class = "text-reset" href="https://github.com/MarySeeley/cs260Fall2023/tree/main">Mary Seeley's GitHub</a>
         </footer>
+        <script src = "results.js"></script>
     </body>
 </html>
