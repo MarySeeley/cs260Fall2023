@@ -1,12 +1,26 @@
-function selectTimes(){
-    let group = []
-    const groupText = localStorage.getItem('group');
-    if(groupText){
+
+async function selectTimes(){
+    let group = [];
+    try {
+        // Get the latest high scores from the service
+        const response = await fetch('/api/group');
+        group = await response.json();
+    
+        // Save the scores in case we go offline in the future
+        localStorage.setItem('group', JSON.stringify(group));
+    } catch {
+        // If there was an error then just use the last saved scores
+        const groupText = localStorage.getItem('group');
+        if (groupText) {
         group = JSON.parse(groupText);
+        }
     }
+    showTimes(group)
+}
+async function showTimes(group){
     const tableHeadElem = document.querySelector('#headSelect');
     const tableBodyElem = document.querySelector('#bodySelect');
-    if(groupText){
+    if(group){
         const startDay = new Date(group.startDay);
         const endDay = new Date(group.endDay);
         const daysArray = []
@@ -38,7 +52,7 @@ function selectTimes(){
         }
         let time = Object()
         const hourDay = {'hours': hoursArray, 'days': daysArray};
-        localStorage.setItem('hourDay', JSON.stringify(hourDay));
+        
         for(let i = 0; hoursArray.length > i; i++){
             const timeEl = document.createElement('td');
             timeEl.textContent = hoursArray[i];
@@ -53,7 +67,34 @@ function selectTimes(){
             }
             tableBodyElem.appendChild(rowEl);
         }
-        localStorage.setItem('time', JSON.stringify(time))
+        try {
+            const response = await fetch('/api/hourDay', {
+              method: 'POST',
+              headers: {'content-type': 'application/json'},
+              body: JSON.stringify(hourDay),
+            });
+      
+            // Store what the service gave us as the high scores
+            const hourDays = await response.json();
+            localStorage.setItem('hourDay', JSON.stringify(hourDays));
+          } catch {
+            // If there was an error then just track scores locally
+            localStorage.setItem('hourDay', JSON.stringify(hourDay));
+        }
+        try {
+            const response = await fetch('/api/time', {
+              method: 'POST',
+              headers: {'content-type': 'application/json'},
+              body: JSON.stringify(time),
+            });
+      
+            // Store what the service gave us as the high scores
+            const times = await response.json();
+            localStorage.setItem('time', JSON.stringify(times));
+          } catch {
+            // If there was an error then just track scores locally
+            localStorage.setItem('time', JSON.stringify(time))
+        }
         
     }
     else{

@@ -1,15 +1,40 @@
-function resultSetUp(){
-    let hourDay = []
-    const hourDayText = localStorage.getItem('hourDay');
-    if(hourDayText){
-        hourDay = JSON.parse(hourDayText)
+async function resultSetUp(){
+    let hourDay = [];
+    try {
+        // Get the latest high scores from the service
+        const response = await fetch('/api/hourDay');
+        hourDay = await response.json();
+    
+        // Save the scores in case we go offline in the future
+        localStorage.setItem('hourDay', JSON.stringify(hourDay));
+    } catch {
+        // If there was an error then just use the last saved scores
+        const hourDayText = localStorage.getItem('hourDay');
+        if (hourDayText) {
+        hourDay = JSON.parse(hourDayText);
+        }
     }
-    let time = []
-    const timeText = localStorage.getItem('time');
-    if(timeText){
+    let time = [];
+    try {
+        // Get the latest high scores from the service
+        const response = await fetch('/api/time');
+        time = await response.json();
+    
+        // Save the scores in case we go offline in the future
+        localStorage.setItem('time', JSON.stringify(time));
+    } catch {
+        // If there was an error then just use the last saved scores
+        const timeText = localStorage.getItem('time');
+        if (timeText) {
         time = JSON.parse(timeText);
-        console.log(time)
+        }
     }
+    
+    
+    displayResults(hourDay, time);
+}
+function displayResults(hourDay, time){
+    
     
     const hoursArray = hourDay.hours;
     let daysArray = hourDay.days;
@@ -55,10 +80,26 @@ function resultSetUp(){
         tableBodyElem.appendChild(rowEl);
     }
 }
-function getGroupNameCode(){
-    const groupNameElem = document.querySelector('.group-name');
-    const groupText = localStorage.getItem('group');
-    const group = JSON.parse(groupText);
+async function getGroupNameCode(){
+    let group = [];
+        try {
+          // Get the latest high scores from the service
+          const response = await fetch('/api/group');
+          group = await response.json();
+      
+          // Save the scores in case we go offline in the future
+          localStorage.setItem('group', JSON.stringify(group));
+        } catch {
+          // If there was an error then just use the last saved scores
+          const groupText = localStorage.getItem('group');
+          if (groupText) {
+            group = JSON.parse(groupText);
+          }
+        }
+    
+    displayGroup(group);
+}
+function displayGroup(group){
     groupNameElem.textContent = group.name;
     const groupCodeElem = document.querySelector('.group-code');
     groupCodeElem.textContent = group.code;
