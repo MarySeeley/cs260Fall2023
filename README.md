@@ -50,3 +50,11 @@ Have you ever wanted to plan something? With friends, family, work colleagues, c
 - **WebSocket:** I have a place on the results page where it will show other user's available times.
 - **Application Logic:** The results table turns green, yellow, or red based on when you are available. The table is also created based on the times that you submit.
 
+### Service Deliverable
+-Added backend endpoints that received and returned group data, days and hours array, and when the person was available.
+-**Node.js/Express HTTP service:** Done
+-**Static middleware for fronted:** Done
+-**Calls to third-party endpoints:** Pulled quotes from an API for the About page.
+-**Backend Service Endpoints:** There are placeholders for the user. There are endpoints for group information, days and hours for the group, and when they are available.
+-**Frontend calls service endpoints:** Used fetch functions for frontend service calls.
+
