@@ -44,17 +44,22 @@ Have you ever wanted to plan something? With friends, family, work colleagues, c
 - **Application images:** Images have rounded edges and are centered.
 
 ### JavaScript Deliverables
-- JavaScript works for a single user and there are placeholders for future technologies
+JavaScript works for a single user and there are placeholders for future technologies
 - **Login:** Login form with a button leading you to your groups' page.
 - **Database:** When the person is available and their group information is currently stored in local storage and will be put into a database in the future.
 - **WebSocket:** I have a place on the results page where it will show other user's available times.
 - **Application Logic:** The results table turns green, yellow, or red based on when you are available. The table is also created based on the times that you submit.
 
 ### Service Deliverable
--Added backend endpoints that received and returned group data, days and hours array, and when the person was available.
+Added backend endpoints that received and returned group data, days and hours array, and when the person was available.
 -**Node.js/Express HTTP service:** Done
 -**Static middleware for fronted:** Done
 -**Calls to third-party endpoints:** Pulled quotes from an API for the About page.
 -**Backend Service Endpoints:** There are placeholders for the user. There are endpoints for group information, days and hours for the group, and when they are available.
 -**Frontend calls service endpoints:** Used fetch functions for frontend service calls.
 
+### DB Deliverable
+Stored group info, days and hours for the group, and times when they are available in the database.
+- **MongoDB Atlas database created:** Done
+- **Endpoints for data:** Endpoints now process the data and send it to Mongo.
+- **Stored data in MongoDB:** Done
