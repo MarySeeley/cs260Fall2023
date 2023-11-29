@@ -1,3 +1,6 @@
+function getUser(){
+    return localStorage.getItem('userName') ?? 'Mystery player';
+}
 async function getGroupNameCode(){
     let group = [];
         try {

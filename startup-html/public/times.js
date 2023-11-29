@@ -1,10 +1,18 @@
 
+function getUser(){
+    console.log("getUser")
+    return localStorage.getItem('userName') ?? 'Mystery player';
+}
+/*
 async function selectTimes(){
+    const user = getUser();
+    console.log(user)
     let group = [];
     try {
         // Get the latest high scores from the service
-        const response = await fetch('/api/group');
+        const response = await fetch(`/api/group/${user}`);
         group = await response.json();
+        
     
         // Save the scores in case we go offline in the future
         localStorage.setItem('group', JSON.stringify(group));
@@ -15,12 +23,26 @@ async function selectTimes(){
         group = JSON.parse(groupText);
         }
     }
+    
     showTimes(group)
+    getGroupNameCode(group)
+    
 }
-async function showTimes(group){
+*/
+async function selectTimes(){
+    let group = []
+    const groupText = localStorage.getItem('group');
+    if (groupText) {
+        group = JSON.parse(groupText);
+    }
+    const user = getUser();
     const tableHeadElem = document.querySelector('#headSelect');
     const tableBodyElem = document.querySelector('#bodySelect');
+    console.log("before if")
+    console.log(group)
     if(group){
+        console.log("after if")
+        console.log(group)
         const startDay = new Date(group.startDay);
         const endDay = new Date(group.endDay);
         const daysArray = []
@@ -50,7 +72,7 @@ async function showTimes(group){
             let hour = i + ":00";
             hoursArray.push(i);
         }
-        let time = Object()
+        let time = Object();
         const hourDay = {'hours': hoursArray, 'days': daysArray};
         
         for(let i = 0; hoursArray.length > i; i++){
@@ -67,6 +89,10 @@ async function showTimes(group){
             }
             tableBodyElem.appendChild(rowEl);
         }
+        group['time'] = time;
+        group['hourDay'] = hourDay;
+        localStorage.setItem('group', JSON.stringify(group));
+        /*
         try {
             const response = await fetch('/api/hourDay', {
               method: 'POST',
@@ -95,7 +121,7 @@ async function showTimes(group){
             // If there was an error then just track scores locally
             localStorage.setItem('time', JSON.stringify(time))
         }
-        
+        */
     }
     else{
         tableHeadElem.innerHTML = '<tr><th>Pick dates<th></tr>';
@@ -103,14 +129,17 @@ async function showTimes(group){
 }
 
 function getGroupNameCode(){
-    const groupNameElem = document.querySelector('.group-name');
+    let group = []
     const groupText = localStorage.getItem('group');
-    const group = JSON.parse(groupText);
+    if (groupText) {
+        group = JSON.parse(groupText);
+    }
+    const groupNameElem = document.querySelector('.group-name');
     groupNameElem.textContent = group.name;
     const groupCodeElem = document.querySelector('.group-code');
     groupCodeElem.textContent = group.code;
 }
 
 
-getGroupNameCode()
 selectTimes()
+getGroupNameCode()

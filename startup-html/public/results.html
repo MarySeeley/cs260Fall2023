@@ -85,5 +85,26 @@
             <a class = "text-reset" href="https://github.com/MarySeeley/cs260Fall2023/tree/main">Mary Seeley's GitHub</a>
         </footer>
         <script src = "results.js"></script>
+        <!--
+        <script>
+            // Function to extract parameter from URL
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+    
+            // Function to be called when the button is clicked
+            
+    
+            // Event listener for the button click
+            var paramValue = getParameterByName('param');
+
+            resultSetUp(paramValue);
+        </script>-->
     </body>
 </html>
