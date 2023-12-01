@@ -57,3 +57,9 @@ h1{
     background-color: /*#dbc52 #ebd431#aa9b3b*/#fff3cd;
 }
 
+#playerName {
+    color: rgb(118, 190, 210);
+    font-size: 1.5em;
+    padding: 0.5em;
+  }
+  
