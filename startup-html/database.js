@@ -64,16 +64,16 @@ async function addGroup(group){
 
 async function getGroup(code) {
     console.log("getGroup before")
-    const query = {"code": code };
+    //const query = {"code": code };
     
     const options = {
         sort: { timeStamp: -1 },
         limit: 1,
     };
-    console.log(code)
+    //console.log(code)
     const cursor = await groupCollection.find();
     console.log("getGroup after")
-    //console.log(cursor)
+    // console.log(cursor.toArray())
     return cursor.toArray();
     
 }

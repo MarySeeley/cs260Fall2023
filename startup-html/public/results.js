@@ -1,3 +1,6 @@
+let socket;
+const CreatedEvent = 'createdGroup';
+const JoinedEvent = 'joinedGroup';
 function getUser(){
     return localStorage.getItem('userName') ?? 'Mystery player';
 }
@@ -11,8 +14,6 @@ async function resultSetUp(){
         // Get the latest high scores from the service
         const response = await fetch(`/api/group/${code}`);
         group = await response.json();
-        console.log("end of try")
-        console.log(group)
         // Save the scores in case we go offline in the future
         localStorage.setItem('group', JSON.stringify(group));
     } catch {
@@ -21,14 +22,13 @@ async function resultSetUp(){
         if (groupText) {
         group = JSON.parse(groupText);
         }
-        console.log("end of catch")
-        console.log(group)
     }
     
     displayResults(group)
     
 }
 function displayResults(groupArray){
+    configureWebSocket();
     const code = localStorage.getItem('code')
     for( let i = 0; i < groupArray.length; i++){
         if (groupArray[i].code == code){
@@ -37,6 +37,8 @@ function displayResults(groupArray){
         }
     }
     displayGroup(group)
+    const newUser = localStorage.getItem('newUser')
+    
     const time = group.time;
     const hourDay = group.hourDay;
     const hoursArray = hourDay.hours;
@@ -83,6 +85,14 @@ function displayResults(groupArray){
         }
         tableBodyElem.appendChild(rowEl);
     }
+    broadcastEvent(newUser, JoinedEvent, {}, (error) => {
+        if (error) {
+            // Handle the error
+            console.error(error);
+        } else {
+            // Continue with any other logic after sending the message
+        }
+    });
 }
 /*
 async function getGroupNameCode(){
@@ -111,6 +121,59 @@ function displayGroup(group){
     const groupCodeElem = document.querySelector('.group-code');
     groupCodeElem.textContent = group.code;
 }
+function configureWebSocket(){
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    socket.onopen = (event) => {
+        displayMsg('system', 'group', 'connected');
+    };
+    socket.onclose = (event) => {
+        displayMsg('system', 'group', 'disconnected');
+    };
+    socket.onmessage = async (event) => {
+        console.log('Received a message:', event.data);
+        const msg = JSON.parse(await event.data.text());
+        if (msg.type === CreatedEvent) {
+            console.log("created event")
+            displayMsg('User', msg.from, `created group`);
+        } else if (msg.type === JoinedEvent) {
+            console.log("joined event")
+            displayMsg('User', msg.from, `joined group`);
+        }
+    };
+}
+
+  function displayMsg(cls, from, msg) {
+    const chatText = document.querySelector('#messages');
+    chatText.innerHTML =
+      `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+  }
+
+  function broadcastEvent(from, type, value, callback) {
+    const event = {
+      from: from,
+      type: type,
+      value: value,
+    };
+    // Check if the WebSocket is in the OPEN state before sending
+    if (socket.readyState === socket.OPEN) {
+        socket.send(JSON.stringify(event));
+        console.log("sent")
+    } else if (socket.readyState === socket.CONNECTING) {
+        // If the WebSocket is still connecting, wait and try again
+        console.log("connecting")
+        setTimeout(() => {
+            broadcastEvent(from, type, value, callback);
+        }, 100);
+    } else {
+        console.error('WebSocket is not open. Unable to send data.');
+        // Optionally, handle the error or call a callback
+        if (typeof callback === 'function') {
+            callback(new Error('WebSocket is not open.'));
+        }
+    }
+  }
+
 
 
 resultSetUp()

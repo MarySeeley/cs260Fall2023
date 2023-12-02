@@ -92,6 +92,7 @@ async function selectTimes(){
         group['time'] = time;
         group['hourDay'] = hourDay;
         localStorage.setItem('group', JSON.stringify(group));
+        localStorage.setItem('newUser', user);
         /*
         try {
             const response = await fetch('/api/hourDay', {

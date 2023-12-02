@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const DB = require('./database.js')
+const { peerProxy } = require('./peerProxy.js');
 
 const authCookieName = 'token';
 
@@ -91,6 +92,7 @@ apiRouter.get('/group/:parameter', async(req, res) => {
     const group = await DB.getGroup(user);
     console.log("requested group fetch")
     res.status(202).send(group);
+    // res.send(group);
 });
 
 // Send Group
@@ -148,10 +150,16 @@ function setAuthCookie(res, authToken) {
       sameSite: 'strict',
     });
 }
-
+/*
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+*/
+const httpService = app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+peerProxy(httpService);
 /*
 let scores = [];
 function updateScores(newScore, scores) {
