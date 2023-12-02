@@ -70,3 +70,10 @@ For this deliverable, I combined the groups created with the user who created th
 - **Existing User:** The user can log back in and the user's groups are stored with the user.
 - **Use MongoDB to store credentials:** The MongoDB holds all information on users and their groups.
 - **Restricts Functionality:** You need to be logged in to form a group.
+
+### WebSocket Deliverable
+For this deliverable, I use websocket to announce when a group is created and when someone joins the group.
+- **Backend Listens for WebSocket Connections:** Done
+- **Frontend makes WebSocket Connections:** Done
+- **Data sent over WebSocket Connections:** Done
+- **WebSocket Data displayed:** Says when the group is created and who joined it.
