@@ -1,0 +1,8 @@
+.vscode/
+.DS_Store
+node_modules/
+dist/
+dbConfig.json
+CS 260 Startup.pem
+dbkeys.sh
+cookie.txt
