@@ -77,3 +77,10 @@ For this deliverable, I use websocket to announce when a group is created and wh
 - **Frontend makes WebSocket Connections:** Done
 - **Data sent over WebSocket Connections:** Done
 - **WebSocket Data displayed:** Says when the group is created and who joined it.
+
+### React Deliverable
+For this deliverable, I converted my startup into react.
+-**Bundled and Transposed:** Done
+-**Components:** Time, About, Login, and Start are all components
+-**Router:** Routing About, Login, and Start components all together
+-**Hooks:** Used useState in Start components to gather information
