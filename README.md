@@ -83,4 +83,4 @@ For this deliverable, I converted my startup into react.
 - **Bundled and Transposed:** Done
 - **Components:** Time, About, Login, and Start are all components
 - **Router:** Routing About, Login, and Start components all together
-- **Hooks:** Used useState in Start components to gather information
+- **Hooks:** Used useState in Start components to gather information. Also used useNavigate when clicking buttons to Route between pages.
