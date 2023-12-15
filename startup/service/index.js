@@ -24,7 +24,6 @@ app.set('trust proxy', true);
 
 // Router for service endpoints
 var apiRouter = express.Router();
-app.use(`/api`, apiRouter);
 
 // CreateAuth token for a new user
 apiRouter.post('/auth/create', async (req, res) => {

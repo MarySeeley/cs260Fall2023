@@ -2,8 +2,9 @@ import React from 'react';
 
 export function Results() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>results displayed here</div>
-    </main>
+    <main>
+            <h1>Thanks for submiting Times</h1>
+            <p>Thank you for submitting your available times.</p>
+        </main>
   );
 }
