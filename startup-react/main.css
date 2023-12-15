@@ -1,0 +1,65 @@
+body{
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+}
+
+header{
+    flex: 0 80px;
+    background: #436E75;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0 0.5em;
+    
+}
+
+li{
+    padding: .5em;
+}
+
+main{
+    flex: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+footer{
+    flex: 0 30px;
+    margin: 10px;
+}
+
+menu{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    list-style:none;
+    padding: 0 0.3em;
+}
+
+h1{
+    padding: .5em
+}
+
+.no{
+    background-color: /*#c33a3a#5a2c2c*/ #f8d7da;
+}
+
+.yes{
+    background-color: /*#5d9e5 #436E75#2a472a*/ #d1e7dd;
+}
+
+.maybe{
+    background-color: /*#dbc52 #ebd431#aa9b3b*/#fff3cd;
+}
+
+#playerName {
+    color: rgb(118, 190, 210);
+    font-size: 1.5em;
+    padding: 0.5em;
+}
+  
