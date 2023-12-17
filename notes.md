@@ -6,6 +6,247 @@ GitHub
 - To merge it with the main branch you push it to the main branch
 - If there is a conflict you need to fix the conflict before merging
 - You can also create a branch and work on it. When you are ready you can merge the branches together.
+
+# Final Review
+1. What ports are used for HTTP, HTTPS, SSH?
+	• 80, 443, 22 Respectively
+2. What do HTTP status codes in the 300, 400, 500 range indicate?
+	• 300 redirection
+	• 400 client error
+	• 500 server error
+3. What does the HTTP header content-type allows you to do?
+	• Tells you what type of content your dealing with like json, plaintext
+	• When a client makes an HTTP request, the server includes the Content-Type header in the response to inform the client about the type of data being sent. This allows the client to process and display the content appropriately. For example, a web browser relies on the Content-Type header to render a webpage correctly, whether it's HTML, JSON, or another format.
+	• 3 types: text (plain, html, css, JavaScript), application(json, xml, pdf), and image(jpeg, png, gif)
+	• Example:
+		○ HTTP/1.1 200 OK
+		○ Content-Type: text/html; charset=utf-8
+4. What do the following attributes of a cookie do?
+• Domain
+	• Specifies the domain for which the cookie is valid.
+• Path
+	The Path attribute defines the specific path or directory within the domain for which the cookie is valid. If a cookie is set with a specific path, the browser sends the cookie only when making requests to that path or its subdirectories. 
+• SameSite
+	• Only returns cookie to domain it was generated with
+	• The SameSite attribute is a security feature that controls when cookies are sent with cross-site requests. It helps mitigate the risk of cross-site request forgery (CSRF) and cross-site scripting (XSS) attacks. The possible values for SameSite are:
+		• Strict: Cookies are only sent in a first-party context, and not in cross-site requests.
+		• Lax: Cookies are sent in top-level navigation (e.g., when following a link), but not in cross-site requests initiated by third-party websites through, for example, an embedded resource.
+		• None: Cookies are sent in all contexts, including cross-site requests. However, when using None, the Secure attribute must also be set, indicating that the cookie should only be sent over secure (HTTPS) connections.
+• HTTPOnly
+	• Tells browser to not allow javascript to run on the browser so it can read the cookie
+5. Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /foo/bar?
+	• If fetch has post with the path it will run that code
+	• Be aware of the path and method, so the post and use
+	• So app.use('/api') would run if anything calls api
+	• Be aware that if part of the path is already defined in the file we need to run that. 
+	• Run from top to bottom until you hit a res.send
+6. Given the following Express service code: What does the following JavaScript fetch return?
+	• Service code is just the code after app.something()
+	• Example:
+		const fetch = require('node-fetch');
+		
+		const url = 'http://localhost:3000/foo/bar';
+		
+		// Make an HTTP GET request using fetch
+		fetch(url)
+		  .then(response => {
+		    if (!response.ok) {
+		      throw new Error(`HTTP error! Status: ${response.status}`);
+		    }
+		    return response.text();
+		  })
+		  .then(data => {
+		    console.log('Response from server:', data);
+		  })
+		  .catch(error => {
+		    console.error('Error:', error.message);
+		  });
+		• 
+7. Given the following MongoDB query
+{ cost: { $gt: 10 }, name: /fran.*/}
+select all of the matching documents.
+	• Cost greater than 10
+	• Name is a reg ex. So fran.(then any character)*(any amount of that character)
+8. How should you store user passwords in a database?
+	• Hashed
+		• Never store plain text passwords. Instead, use a one-way cryptographic hashing algorithm to convert the password into a fixed-length hash.
+	• Salted
+		Use a unique random salt for each password before hashing. A salt is a random value that is combined with the password before hashing, adding an additional layer of complexity to the hash and making it more resistant to attacks. The salt should be unique per user and stored alongside the hashed password.
+9. Assuming the following Node.js service code is executing with websockets, what will be logged to the console of the web browser?
+	• On connection
+		○ Give them a unique user id, assign socket number, and telling the backend it's connected
+		○ When ever a client connects
+	• On message
+		○ Happens when a client sends a message
+	• On close
+		○ When the client leaves
+10. What is the WebSocket protocol used for?
+	• Instantaneous client to server connection where either client or server can initiate contact
+11. What is JSX and how are the curly braces rendered?
+	• JavaScript and HTML mushed together
+	• Anything after the return is rendered to the screen
+		○ Return <div>hello<div>;
+		○ Return (<lots of code>);
+	• Curly braces {} are used in JSX to embed JavaScript expressions. This allows you to inject dynamic values or execute JavaScript code within the JSX.
+	• You can put dynamic code like 4variables and function calls into the curly braces
+	• They are evaluated when the JSX code is transpired
+12. Assuming a HTML document with a 
+<divid="root"></div>
+element, what content will the following React component generate?
+      function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+      }
+      function App() {
+        return (
+          <div>
+            <Welcome name="Sara" />
+            <Welcome name="Cahal" />
+            <Welcome name="Edite" />
+          </div>
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+	• Hello Sarah
+	• Hello Cahal
+	• Hello Edite
+13. Assuming a HTML document with a 
+<divid="root"></div>
+element, what content will the following React component generate?
+    function Numbers() { 
+      const numbers = [1, 2, 3, 4, 5];
+      const listItems = numbers.map((number) =>
+        <li>{number}</li>
+      );
+      return(<ul>{listItems}</ul>)
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root')); 
+    root.render(<Numbers/>);
+	• It will print the list of numbers in the bullet points
+14. What does the following React component do?
+functionExample(){  // Declare a new state variable, which we'll call "count"  
+  const[count,setCount]=useState(0);return(<div><p>You clicked {count} times</p><button onClick={()=>setCount(count +1)}>        Click me</button></div>);}
+	• Increase count each time the button clicked by one
+	• Also changing the words "You clicked {count} times"
+15. What are React Hooks used for?
+	• Handling/modifying state
+	• Handles life cycle events of a component. On create or on destroy
+	• Different types: State Management (useState), Effect Side Effects (useEffect), Context API (useContext), Reducer Pattern (useReducer), Navigation (useNavigate), and Custom Hooks (useCustomHooks)
+16. What is the useEffect hook used for?
+	• Update the page or change things when things change
+	• Also updates when it's destroyed
+	• Effect Side Effects (useEffect):
+		• The useEffect hook is used for handling side effects in functional components. It allows you to perform actions such as data fetching, subscriptions, or manual DOM manipulations. It is the functional component equivalent of componentDidMount, componentDidUpdate, and componentWillUnmount in class components.
+	• The useEffect hook enables you to manage these side effects in a way that is consistent with the component's lifecycle.
+	
+	The useEffect hook in React is used to perform side effects in functional components. Side effects are operations that affect the outside world, such as data fetching, subscriptions, manual DOM manipulations, or setting up timers. The useEffect hook enables you to manage these side effects in a way that is consistent with the component's lifecycle.
+	Let's break down its key aspects:
+	1. Function Argument:
+		• The first argument to useEffect is a function that contains the code you want to execute as a side effect. This function is often referred to as the "effect" function.
+	2. Dependency Array:
+		• The second argument to useEffect is an optional array of dependencies. If the dependencies array is provided, the effect function will only be re-executed if any of the dependencies have changed since the last render. If the dependencies array is omitted, the effect runs after every render.
+	3. Cleanup Function:
+		• The effect function can optionally return a cleanup function. This cleanup function will be executed when the component is unmounted or when the dependencies change and the effect is about to run again. It's used for cleaning up resources like event listeners or subscriptions.
+	• Syntax:
+	useEffect(() => {
+	  // Code to run after each render or on component mount/unmount
+	  return () => {
+	    // Cleanup code (optional)
+	  };
+	}, [dependencies]);
+	• Common cases are data fetching, Subscriptions, Manual DOM Manipulation
+17. What does this code do?
+exportdefaultfunctionApp()
+	{return(<BrowserRouter><Routes><Routepath="/"element={<Layout/>}><Routeindexelement={<Home/>}/><Routepath="blogs"element={<Blogs/>}/><Routepath="contact"element={<Contact/>}/><Routepath="*"element={<NoPage/>}/></Route></Routes></BrowserRouter>);}
+	• "/" it will display the <Layout> component
+	• "*" will take in anything not said above and render it to <NoPage>
+	• The <Route index element={<Home />} /> is nested inside the root route. It represents the content to be rendered when the URL path matches the root ("/") path.
+	• So, the path="/" element={<Layout />} is used for the parent route, and the index prop is used for the default content (Home component) inside the parent route. They work together to organize the rendering structure based on the URL paths in a nested manner.
+	
+18. What role does npm play in web development?
+	• It manages your node packages
+	• Package Management, Dependency Resolution, Module Installation, Script Execution, Version Management, Code Distribution, Project Initialization, and Ecosystem Collaboration
+19. What does package.json do in a npm project?
+	• Lists all your packages
+	• When you deploy it specifies what packages to do
+	• What command to use to run your server
+	• Holds name and all meta information of the project
+	• Project Metadata, dependencies and devdependencies (npm install will pull from this), Scirpts (npm run pulls from this), Project initialization (npm init initializes package.json after asking you questions), Versioning and Semantic Versioning (SemVer), Configurations, Metadata for npm Registry,
+20. What does the fetch function do?
+• The fetch function returns a Promise that resolves to the Response to that request, whether it is successful or not.
+fetch('https://api.example.com/data')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Data received:', data);
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+  });
+• URL:
+	• The first argument to fetch is the URL of the resource you want to fetch. This can be a relative or absolute URL.
+• Promise-based Response:
+	• The fetch function returns a Promise that resolves to a Response object representing the response to the request. The Response object contains information about the response, such as status, headers, and methods for reading the response body.
+• Handling the Response:
+	• The then method is used to handle the asynchronous response. In the example, it checks if the response was successful (status code 200-299), and if so, it parses the JSON response using response.json().
+• Error Handling:
+	• The catch method is used to catch any errors that may occur during the request or response handling. This is important for handling network errors or unsuccessful HTTP responses.
+• This is how you put differing variables in:
+	fetch('https://api.example.com/data', {
+	  method: 'POST',
+	  headers: {
+	    'Content-Type': 'application/json',
+	    // Additional headers as needed
+	  },
+	  body: JSON.stringify({
+	    key1: 'value1',
+	    key2: 'value2'
+	  }),
+	  credentials: 'include', // Include cookies in the request
+	})
+	  .then(response => response.json())
+	  .then(data => console.log('Data received:', data))
+	  .catch(error => console.error('Fetch error:', error));
+	• To grab the variables on the server side you use req.body
+	• This is what it would like on the server side:
+	const express = require('express');
+	const app = express();
+	const PORT = 3000;
+	
+	app.use(express.json()); // Enable parsing JSON requests
+	
+	// Handle GET request
+	app.get('/data', (req, res) => {
+	  res.json({ message: 'Hello from the server!' });
+	});
+	
+	// Handle POST request
+	app.post('/data', (req, res) => {
+	  const requestData = req.body;
+	  console.log('Received POST data:', requestData);
+	  res.json({ message: 'Data received on the server!' });
+	});
+	
+	app.listen(PORT, () => {
+	  console.log(`Server is running on http://localhost:${PORT}`);
+	});
+21. What does node.js do?
+	• Runs your server
+	• It comes with npm
+	• Node.js is a runtime environment that allows developers to use JavaScript on the server side, and it is well-suited for building scalable, high-performance, and real-time applications with a focus on asynchronous I/O operations.
+22. What does Vite do?
+	• It allows you to bundle all your code which includes the react component together so that it can be run on the server
+	• Transposes jsx into normal JavaScript sot he server can read it 
+1. Vite aims to provide a fast and modern development experience for frontend developers by leveraging native ES modules, optimizing the build process, and supporting popular frontend frameworks. It is designed to enhance the development workflow and improve performance, especially for large and complex projects.
+	
+![image](https://github.com/MarySeeley/cs260Fall2023/assets/128410544/e5dfc173-fd34-4fe5-bca6-19ed641dc2a6)
+
+
+# MidTerm Review
 1. In the following code, what does the link element do?
 	• You can have links to media with src with the tags img, audio, and video
 	• Example:
